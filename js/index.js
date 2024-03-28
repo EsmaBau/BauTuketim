@@ -142,7 +142,7 @@ $("#genelVeri2").on("click", ".btnKampusSil", function () {
         $.dataListele();
       },
       error: function (xhr, status, error) {
-        alert("Kampüs silinirken bir hata oluştu: " + xhr.responseText);
+        alert("sayaç silinirken bir hata oluştu: " + xhr.responseText);
       },
     });
   }
