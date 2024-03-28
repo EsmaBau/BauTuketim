@@ -149,17 +149,6 @@ $("#kaydetBtn").click(function () {
     });
 });
 
-  
-   
-   document.getElementById("giderTabloAc").addEventListener("click", function() {
-    var div = document.getElementById("acilacakGiderTablo");
-    if (div.style.display === "none") {
-        div.style.display = "block";
-    } else {
-        div.style.display = "none";
-    }
-  });
-
    $("#kullaniciVeri").on("click", ".BtnKullaniciSil", function () {
     var id = $(this).data("id");
     var sonuc = confirm("Silmek istiyor musunuz?");
