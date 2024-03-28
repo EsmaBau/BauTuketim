@@ -208,20 +208,20 @@ $("#kaydetBtn").click(function () {
 
 
 
+
+
+});
      // Collapse işlevini etkinleştir
-    $('#accordionSidebar .nav-link').on('click', function(){
-     // Tıklanan menü öğesinin alt menüsünü bul
-     var submenu = $(this).next('.collapse');
-    
-      // Tüm alt menüleri kapalı olarak ayarla
-    $('#accordionSidebar .collapse').not(submenu).collapse('hide');
-    
-     // Tıklanan menü öğesinin alt menüsünü aç veya kapat
-     submenu.collapse('toggle');
-});
-
-});
-
+     $('#accordionSidebar .nav-link').on('click', function(){
+        // Tıklanan menü öğesinin alt menüsünü bul
+        var submenu = $(this).next('.collapse');
+       
+         // Tüm alt menüleri kapalı olarak ayarla
+       $('#accordionSidebar .collapse').not(submenu).collapse('hide');
+       
+        // Tıklanan menü öğesinin alt menüsünü aç veya kapat
+        submenu.collapse('toggle');
+   });
 
  function logout(){
     window.location.href="giris.html"

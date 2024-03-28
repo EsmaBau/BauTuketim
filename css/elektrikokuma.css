@@ -4,7 +4,7 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 175%; /* Genişlik %95 olarak ayarlandı */
+    width: 190%; /* Genişlik %95 olarak ayarlandı */
     max-width: 2000px; /* Maksimum genişlik belirlendi */
     margin: 0 auto; /* Tabloyu yatayda ortala */
   }
@@ -15,7 +15,7 @@
     font-weight: bold;
   }
   #elektrikOkumaVeri th{
-    min-width: 50px;
+    min-width: 70px;
   }
   #elektrikOkumaVeri tbody td {
     background-color: #ffffff; /* Açık renk arka plan */
