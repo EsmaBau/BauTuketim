@@ -1,0 +1,48 @@
+/* Checkbox stilleri */
+.checkbox-container {
+    height: 40px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #4a99df; 
+    padding: 10px;
+    border-radius: 25px;
+}
+
+.custom-checkbox {
+    border-radius: 50%; /* Yuvarlak border-radius */
+    width: 15px;
+    height: 15px; 
+    margin-right: 5px;
+}
+
+.custom-checkbox:checked::after {
+    font-size: 14px;
+    color: white; 
+}
+
+.checkbox-label {
+    margin-top: 4px;
+    color: white; 
+}
+
+
+.btn-more {
+    position: relative;
+    background-color: #343a40;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 5px 10px;
+    margin-left: 10px; /* 10 piksel sağ boşluk */
+  }
+  
+  .btn-more:hover {
+    background-color: #1d2124;
+    color: white;
+  }
+  .kampusAdi_wrapper{
+    width: 90%;
+    background-color: #1d2124;
+  }

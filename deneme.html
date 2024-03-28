@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DataTables - Inline Editing with Add, Edit, Delete</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.css"/>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.js"></script>
+</head>
+<body>
+
+<table id="example" class="display" style="width:100%">
+  <thead>
+      <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Office</th>
+          <th>Age</th>
+          <th>Start date</th>
+          <th>Salary</th>
+          <th>Actions</th>
+      </tr>
+  </thead>
+  <tfoot>
+      <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Office</th>
+          <th>Age</th>
+          <th>Start date</th>
+          <th>Salary</th>
+          <th>Actions</th>
+      </tr>
+  </tfoot>
+  <tbody>
+      <tr>
+          <td><input type="checkbox"></td>
+          <td>Tiger Nixon</td>
+          <td>System Architect</td>
+          <td>Edinburgh</td>
+          <td>61</td>
+          <td>2011/04/25</td>
+          <td>$320,800</td>
+          <td><button class="editBtn">Edit</button> <button class="deleteBtn">Delete</button></td>
+      </tr>
+      <tr>
+          <td><input type="checkbox"></td>
+          <td>Garrett Winters</td>
+          <td>Accountant</td>
+          <td>Tokyo</td>
+          <td>63</td>
+          <td>2011/07/25</td>
+          <td>$170,750</td>
+          <td><button class="editBtn">Edit</button> <button class="deleteBtn">Delete</button></td>
+      </tr>
+      <tr>
+          <td><input type="checkbox"></td>
+          <td>Ashton Cox</td>
+          <td>Junior Technical Author</td>
+          <td>San Francisco</td>
+          <td>66</td>
+          <td>2009/01/12</td>
+          <td>$86,000</td>
+          <td><button class="editBtn">Edit</button> <button class="deleteBtn">Delete</button></td>
+      </tr>
+  </tbody>
+</table>
+
+<button id="addRow">New</button>
+<button id="deleteSelected">Delete Selected</button>
+
+<script>
+  $(document).ready(function() {
+      var table = $('#example').DataTable({
+          "columnDefs": [{
+              "targets": [1, 2, 3, 4, 5, 6],
+              "className": "dt-body-left"
+          }],
+          "select": {
+              style: 'multi'
+          },
+          "dom": 'Bfrtip',
+          "buttons": [
+              'copy', 'csv', 'excel', 'pdf', 'print'
+          ]
+      });
+
+      $('#addRow').on('click', function() {
+          table.row.add([
+              '<input type="checkbox">',
+              '<input type="text" class="newName">',
+              '<input type="text" class="newPosition">',
+              '<input type="text" class="newOffice">',
+              '<input type="text" class="newAge">',
+              '<input type="text" class="newStartDate">',
+              '<input type="text" class="newSalary">',
+              '<button class="createBtn">Create</button>'
+          ]).draw();
+      });
+
+      $('#deleteSelected').on('click', function() {
+          table.rows($('input:checked').parents('tr')).remove().draw();
+      });
+
+      $('#example').on('click', '.editBtn', function() {
+          var rowData = table.row($(this).parents('tr')).data();
+          alert('Edit clicked for row: ' + rowData[0]);
+      });
+
+      $('#example').on('click', '.createBtn', function() {
+          var rowData = [
+              $('.newName').val(),
+              $('.newPosition').val(),
+              $('.newOffice').val(),
+              $('.newAge').val(),
+              $('.newStartDate').val(),
+              $('.newSalary').val()
+          ];
+          table.row($(this).parents('tr')).data(rowData).draw();
+      });
+  });
+</script>
+
+</body>
+</html>

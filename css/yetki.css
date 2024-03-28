@@ -1,0 +1,78 @@
+/* Tablo stilleri */
+#genelVeriYetki_wrapper {
+  background-color: #ffffff; /* Açık renk arka plan */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 190%; /* Genişlik %95 olarak ayarlandı */
+  max-width: 2000px; /* Maksimum genişlik belirlendi */
+  margin: 0 auto; /* Tabloyu yatayda ortala */
+}
+#genelVeriYetki thead th {
+  background-color: #4890d3;
+  color: #fff;
+  font-weight: bold;
+}
+#genelVeriYetki tbody td {
+  background-color: #ffffff; /* Açık renk arka plan */
+  color: #333;
+}
+.dataTables_length {
+  margin-right: 7px; /* "Show entries" dropdown menüsü ile sağ arasında boşluk */
+}
+/* Düğme stilleri */
+.btn-dark {
+  margin-top: 50px;
+  background-color: #343a40;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-left: 9px; /* 10 piksel sağ boşluk */
+}
+#genelVeriYetki th{
+  min-width: 90px;
+}
+
+.btn-dark:hover {
+  background-color: #1d2124;
+}
+
+.btn-more {
+  position: relative;
+  background-color: #343a40;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-left: 10px; /* 10 piksel sağ boşluk */
+}
+
+.btn-more:hover {
+  background-color: #1d2124;
+  color: white;
+}
+
+.duzenleBtn,
+.silBtn {
+  background-color: #343a40;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 3px 8px; /* Yeni padding değerleri */
+  margin-left: 6px; /* 10 piksel sağ boşluk */
+  margin-bottom: 13px;
+  font-size: 16px; /* Yeni font boyutu */
+}
+
+.duzenleBtn:hover,
+.silBtn:hover {
+  background-color: #1d2124;
+}
+.dataTables_length {
+  margin-right: 7px; /* "Show entries" dropdown menüsü ile sağ arasında boşluk */
+}
+
+.dataTables_filter {
+  margin-top: 10px; /* Arama kutusu ile tablo düğmeleri arasında boşluk bırak */
+}
