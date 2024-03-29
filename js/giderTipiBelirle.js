@@ -149,17 +149,6 @@ $("#kaydetBtn").click(function () {
     });
 });
 
-  
-   
-   document.getElementById("giderTabloAc").addEventListener("click", function() {
-    var div = document.getElementById("acilacakGiderTablo");
-    if (div.style.display === "none") {
-        div.style.display = "block";
-    } else {
-        div.style.display = "none";
-    }
-  });
-
    $("#kullaniciVeri").on("click", ".BtnKullaniciSil", function () {
     var id = $(this).data("id");
     var sonuc = confirm("Silmek istiyor musunuz?");
@@ -217,20 +206,20 @@ $("#kaydetBtn").click(function () {
 $.giderTuruOku();
 
 
+
+
+});
      // Collapse işlevini etkinleştir
-    $('#accordionSidebar .nav-link').on('click', function(){
-     // Tıklanan menü öğesinin alt menüsünü bul
-     var submenu = $(this).next('.collapse');
-    
-      // Tüm alt menüleri kapalı olarak ayarla
-    $('#accordionSidebar .collapse').not(submenu).collapse('hide');
-    
-     // Tıklanan menü öğesinin alt menüsünü aç veya kapat
-     submenu.collapse('toggle');
-});
-
-});
-
+     $('#accordionSidebar .nav-link').on('click', function(){
+        // Tıklanan menü öğesinin alt menüsünü bul
+        var submenu = $(this).next('.collapse');
+       
+         // Tüm alt menüleri kapalı olarak ayarla
+       $('#accordionSidebar .collapse').not(submenu).collapse('hide');
+       
+        // Tıklanan menü öğesinin alt menüsünü aç veya kapat
+        submenu.collapse('toggle');
+   });
 
  function logout(){
     window.location.href="giris.html"

@@ -126,17 +126,6 @@ $(document).ready(function() {
       });
     };
     $.dataListele();
-  
-    document.getElementById("kampusTabloAc").addEventListener("click", function() {
-      var div = document.getElementById("acilacakKampusTablo");
-      if (div.style.display === "none") {
-          div.style.display = "block";
-      } else {
-          div.style.display = "none";
-      }
-  });
-
-    
 
 // Sil butonuna tıklama olayı
 $("#genelVeri2").on("click", ".btnKampusSil", function () {
@@ -153,7 +142,7 @@ $("#genelVeri2").on("click", ".btnKampusSil", function () {
         $.dataListele();
       },
       error: function (xhr, status, error) {
-        alert("sayaç silinirken bir hata oluştu: " + xhr.responseText);
+        alert("Kampüs silinirken bir hata oluştu: " + xhr.responseText);
       },
     });
   }

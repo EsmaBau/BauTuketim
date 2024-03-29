@@ -209,7 +209,7 @@ $(document).ready(function () {
         };             
         $.dataListele(); 
 
-        var yetkiId = 3; // Bu değer sunucudan veya başka bir kaynaktan alınabilir
+       /* var yetkiId = 3; // Bu değer sunucudan veya başka bir kaynaktan alınabilir
 
         // YetkiId 3 olmayan kullanıcılar için bazı menüleri gizle
         if (yetkiId !== 3) {
@@ -217,7 +217,7 @@ $(document).ready(function () {
             $('#collapseTanımlamalar').parent('.nav-item').hide();
             // Yetki Tanımlama/Verme menüsünü gizle
             $('#collapseYetkiler').parent('.nav-item').hide();
-        }  $('#collapseYetkiler').parent('.nav-item').hide();
+        }  $('#collapseYetkiler').parent('.nav-item').hide();/*/
         
 
 

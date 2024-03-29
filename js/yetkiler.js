@@ -115,15 +115,6 @@ $(document).ready(function() {
     };
     $.dataListele();
 
-    document.getElementById("yetkiTabloAc").addEventListener("click", function() {
-        var div = document.getElementById("acilacakYetkiTablo");
-        if (div.style.display === "none") {
-            div.style.display = "block";
-        } else {
-            div.style.display = "none";
-        }
-    });
-
     $(document).on('click', '.btnYetkiDuzenle', function() {
         var row = $(this).closest('tr');
         var YetkiId = $(this).data('id');

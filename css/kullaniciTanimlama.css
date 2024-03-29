@@ -15,7 +15,7 @@
   font-weight: bold;
 }
 #kullaniciVeri th{
-  min-width: 100px;
+  min-width: 80px;
 }
 #kullaniciVeri tbody td {
   background-color: #ffffff; /* Açık renk arka plan */
