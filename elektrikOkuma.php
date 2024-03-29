@@ -32,55 +32,56 @@
                 </div>
                 <div class="sidebar-brand-text mx-3">BAU Tüketim <sup>.</sup></div>
             </a>
-
             <!-- Divider -->
             <hr class="sidebar-divider">
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Tanımlamalar
-            </div>
-            <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTanımlamalar"
-                    aria-expanded="true" aria-controls="collapseTanımlamalar">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Tanımlamalar</span>
-                </a>
-                <div id="collapseTanımlamalar" class="collapse" aria-labelledby="headingTanımlamalar"
-                    data-parent="#accordionSidebar" style="display: none;">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Tanımlamalar:</h6>
-                        <a class="collapse-item" href="index.html">Kampüs Tanımlama</a>
-                        <a class="collapse-item" href="giderTipiBelirle.html">Gider Tipi Tanımlama</a>
-                        <a class="collapse-item" href="tesisatTanimlama.html">Tesisat Tanımlama</a>
-                        <a class="collapse-item" href="kullaniciTanimlama.html">Kullanıcı Tanımlama</a>
-                    </div>
+
+            <?php if ($_SESSION['yetkiId'] == 3) { ?>
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Tanımlamalar
                 </div>
-            </li>
-
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Yetki Tanımlama/Verme
-            </div>
-            <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseYetkiler" aria-expanded="true"
-                    aria-controls="collapseYetkiler">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Yetkiler</span>
-                </a>
-                <div id="collapseYetkiler" class="collapse" aria-labelledby="headingYetkiler"
-                    data-parent="#accordionSidebar" style="display: none;">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Yetki İşlemleri:</h6>
-                        <a class="collapse-item" href="Yetkiler.html">Yetkiler</a>
-                        <a class="collapse-item" href="yetkiVerme.html">Yetki Verme</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTanımlamalar"
+                        aria-expanded="true" aria-controls="collapseTanımlamalar">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Tanımlamalar</span>
+                    </a>
+                    <div id="collapseTanımlamalar" class="collapse" aria-labelledby="headingTanımlamalar"
+                        data-parent="#accordionSidebar" style="display: none;">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Tanımlamalar:</h6>
+                            <a class="collapse-item" href="index.html">Kampüs Tanımlama</a>
+                            <a class="collapse-item" href="giderTipiBelirle.html">Gider Tipi Tanımlama</a>
+                            <a class="collapse-item" href="tesisatTanimlama.html">Tesisat Tanımlama</a>
+                            <a class="collapse-item" href="kullaniciTanimlama.html">Kullanıcı Tanımlama</a>
+                        </div>
                     </div>
+                </li>
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Yetki Tanımlama/Verme
                 </div>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseYetkiler" aria-expanded="true"
+                        aria-controls="collapseYetkiler">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Yetkiler</span>
+                    </a>
+                    <div id="collapseYetkiler" class="collapse" aria-labelledby="headingYetkiler"
+                        data-parent="#accordionSidebar" style="display: none;">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Yetki İşlemleri:</h6>
+                            <a class="collapse-item" href="Yetkiler.html">Yetkiler</a>
+                            <a class="collapse-item" href="yetkiVerme.html">Yetki Verme</a>
+                        </div>
+                    </div>
+                </li>
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+            <?php } ?>
+
             <!-- Heading -->
             <div class="sidebar-heading">
                 Okumalar
