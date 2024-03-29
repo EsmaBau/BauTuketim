@@ -36,7 +36,7 @@ $(document).ready(function () {
                             {
                                 targets: -1,
                                 render: function(data, type, row, meta) {
-                                    return "<div class='btn-group' role='group'><button class='silBtn btn'style='background-color: #307dc5 ; color: white;'  data-id='" + row[0] + "'>Sil</button><button class='duzenleBtn btn btn-primary' data-id='" + row[0] + "'>Düzenle</button></div>";
+                                    return "<div class='btn-group' role='group'><button class='silBtn'style='background-color: #307dc5 ; color: white;'  data-id='" + row[0] + "'>Sil</button><button class='duzenleBtn' data-id='" + row[0] + "'>Düzenle</button></div>";
                                 }
                             }
                         ],
@@ -171,7 +171,6 @@ $("#kaydetBtn").click(function () {
         success: function (response) {
           alert(response);
           alert("Kampüs başarıyla silindi.");
-          $.dataListele();
         },
         error: function (xhr, status, error) {
           alert("Kampüs silinirken bir hata oluştu: " + xhr.responseText);
@@ -179,6 +178,7 @@ $("#kaydetBtn").click(function () {
       });
     }
   });
+
 
   var _editGiderTipiId;
   $("#genelVeri3").on("click", ".duzenleBtn", function() {
@@ -192,31 +192,29 @@ $("#kaydetBtn").click(function () {
       $("#editModal5").modal("show");
   });
   
-  // duzenle 99
-  $("#editbtKaydet").click(function() {
-      var GiderTipiIdx = _editGiderTipiId;
-      var Tipx = $("#editGiderTuru").val();
-      
-      $.ajax({
-          url: "php/giderTipiDuzenle.php",
-          method: "POST",
-          data: { 
-              GiderTipiId: GiderTipiIdx,
-              Tip: Tipx
-          },
-          success: function(response) {
-              alert(response);
-              $.dataListele();
-              $('#editModal5').modal('hide');
-          },
-          error: function(xhr, status, error) {
-              alert("Düzenleme hatası: " + xhr.responseText);
-          }
-      });
-  });
+  $("#editGiderKaydet").click(function() {
+    var GiderTipiIdx = _editGiderTipiId;
+    var Tipx = $("#editGiderTuru").val();
+    
+    $.ajax({
+        url: "php/giderTipiDuzenle.php",
+        method: "POST",
+        data: { 
+            GiderTipiId: GiderTipiIdx,
+            Tip: Tipx
+        },
+        success: function(response) {
+            alert(response);
+            $.giderTuruOku(); // Tabloyu güncelle
+            $('#editModal5').modal('hide');
+        },
+        error: function(xhr, status, error) {
+            alert("Düzenleme hatası: " + xhr.responseText);
+        }
+    });
 
-
-
+});
+$.giderTuruOku();
 
 
      // Collapse işlevini etkinleştir
@@ -236,7 +234,6 @@ $("#kaydetBtn").click(function () {
 
  function logout(){
     window.location.href="giris.html"
-      
    }
  // Profil dropdown menüsünün gösterilmesi ve gizlenmesi
  var profileDropdown = document.getElementById("userDropdown");
@@ -251,9 +248,6 @@ $("#kaydetBtn").click(function () {
         profileMenu.classList.remove("show");
     }
  });
-
-
-
 
 
 
