@@ -33,57 +33,51 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <?php
-            session_start();
-            if (isset($_SESSION['yetkiId']) && $_SESSION['yetkiId'] == 3) { ?>
-
-                <!-- Heading -->
-                <div class="sidebar-heading">
-                    Tanımlamalar
-                </div>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTanımlamalar"
-                        aria-expanded="true" aria-controls="collapseTanımlamalar">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>Tanımlamalar</span>
-                    </a>
-                    <div id="collapseTanımlamalar" class="collapse" aria-labelledby="headingTanımlamalar"
-                        data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Tanımlamalar:</h6>
-                            <a class="collapse-item" href="index.html">Kampüs Tanımlama</a>
-                            <a class="collapse-item" href="giderTipiBelirle.html">Gider Tipi Tanımlama</a>
-                            <a class="collapse-item" href="tesisatTanimlama.html">Tesisat Tanımlama</a>
-                            <a class="collapse-item" href="kullaniciTanimlama.html">Kullanıcı Tanımlama</a>
-                        </div>
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Tanımlamalar
+            </div>
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTanımlamalar"
+                    aria-expanded="true" aria-controls="collapseTanımlamalar">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Tanımlamalar</span>
+                </a>
+                <div id="collapseTanımlamalar" class="collapse" aria-labelledby="headingTanımlamalar"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Tanımlamalar:</h6>
+                        <a class="collapse-item" href="index.html">Kampüs Tanımlama</a>
+                        <a class="collapse-item" href="giderTipiBelirle.html">Gider Tipi Tanımlama</a>
+                        <a class="collapse-item" href="tesisatTanimlama.html">Tesisat Tanımlama</a>
+                        <a class="collapse-item" href="kullaniciTanimlama.html">Kullanıcı Tanımlama</a>
                     </div>
-                </li>
-
-                <!-- Divider -->
-                <hr class="sidebar-divider">
-                <!-- Heading -->
-                <div class="sidebar-heading">
-                    Yetki Tanımlama/Verme
                 </div>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseYetkiler" aria-expanded="true"
-                        aria-controls="collapseYetkiler">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>Yetkiler</span>
-                    </a>
-                    <div id="collapseYetkiler" class="collapse" aria-labelledby="headingYetkiler"
-                        data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Yetki İşlemleri:</h6>
-                            <a class="collapse-item" href="Yetkiler.html">Yetki Tanımlama</a>
-                            <a class="collapse-item" href="yetkiVerme.html">Yetki Verme</a>
-                        </div>
-                    </div>
-                </li>
-                <!-- Divider -->
-                <hr class="sidebar-divider">
+            </li>
 
-            <?php } ?>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Yetki Tanımlama/Verme
+            </div>
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseYetkiler" aria-expanded="true"
+                    aria-controls="collapseYetkiler">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Yetkiler</span>
+                </a>
+                <div id="collapseYetkiler" class="collapse" aria-labelledby="headingYetkiler"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Yetki İşlemleri:</h6>
+                        <a class="collapse-item" href="Yetkiler.html">Yetki Tanımlama</a>
+                        <a class="collapse-item" href="yetkiVerme.html">Yetki Verme</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
             <!-- Heading -->
             <div class="sidebar-heading">
@@ -136,17 +130,16 @@
                                 <a href="#">Profil</a><br><br>
                                 <a href="#" onclick="logout()">Çıkış Yap</a>
                                 <!-- Nav Item - User Information -->
-                                <li class="nav-item dropdown no-arrow">
-                                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <p class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                            Yetki:
-                                            <?php echo isset($_SESSION['yetkiId']) && $_SESSION['yetkiId'] == 3 ? "Admin" : "Kullanıcı"; ?>
-                                        </p>
-                                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
-                                        <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
-                                    </a>
-                                </li>
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <p class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    Yetki:
+                                    <?php echo $_SESSION['yetkiId'] == 3 ? "Admin" : "Kullanıcı" ?>
+                                </p>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                            </a>
                         </li>
                     </ul>
                 </nav>

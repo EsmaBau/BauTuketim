@@ -35,9 +35,7 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <?php 
-            session_start();
-            if ($_SESSION['yetkiId'] == 3) { ?>
+            <div id="adminNavs" class="d-none">
                 <!-- Heading -->
                 <div class="sidebar-heading">
                     Tanımlamalar
@@ -66,8 +64,8 @@
                     Yetki Tanımlama/Verme
                 </div>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseYetkiler" aria-expanded="true"
-                        aria-controls="collapseYetkiler">
+                    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseYetkiler"
+                        aria-expanded="true" aria-controls="collapseYetkiler">
                         <i class="fas fa-fw fa-cog"></i>
                         <span>Yetkiler</span>
                     </a>
@@ -82,7 +80,7 @@
                 </li>
                 <!-- Divider -->
                 <hr class="sidebar-divider">
-            <?php } ?>
+            </div>
 
             <!-- Heading -->
             <div class="sidebar-heading">
@@ -239,6 +237,26 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("Document ready!");
+
+            // Admin yetkisi kontrolü
+            var adminNavs = document.getElementById("adminNavs");
+            var yetkiId = localStorage.getItem('yetkiId');
+
+            console.log("YetkiId: " + yetkiId);
+
+            if (yetkiId == 3) {
+                console.log("Admin girişi yapıldı!");
+                adminNavs.classList.remove("d-none");
+            }
+            else {
+                console.log("Kullanıcı girişi yapıldı!");
+            }
+        });
+    </script>
 
     <!-- ELEKTRIK OKUMA-->
     <!-- jQuery ve Bootstrap JS -->

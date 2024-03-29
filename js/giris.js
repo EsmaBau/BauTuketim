@@ -14,14 +14,22 @@ $(document).ready(function () {
                 if (response.status === 'success') {
                     // Giriş başarılı ise yapılacak işlemler buraya yazılır
                     var yetkiId = response.YetkiId;
-                    console.log('Giriş başarılı! YetkiId:', yetkiId);
+
+                    // yetkiId'yi sonraki işlemlerde kullanmak için frontend tarafında sakla
+                    localStorage.setItem('yetkiId', yetkiId);
+                    console.log('Giriş başarılı!' + ' YetkiId: ' + yetkiId);
+
+                    var testYetkiId = localStorage.getItem('yetkiId');
+                    console.log('localStorage\'dan YetkiId: ' + testYetkiId);
+
+                    console.log('redirecting...');
 
                     if (yetkiId === 3) {
-                        // YetkiId 3 ise, kullanıcıyı index.html sayfasına yönlendir
-                        window.location.href = 'index.php';
+                        // YetkiId 3 ise, kullanıcıyı index.php sayfasına yönlendir
+                        window.location.href = 'index.hmtl';
                     } else {
-                        // YetkiId 3 değilse, kullanıcıyı elektrikOkuma.html sayfasına yönlendir
-                        window.location.href = 'elektrikOkuma.php';
+                        // YetkiId 3 değilse, kullanıcıyı elektrikOkuma.php sayfasına yönlendir
+                        window.location.href = 'elektrikOkuma.html';
                     }
                 } else {
                     // Giriş başarısız ise uygun mesajı göster
