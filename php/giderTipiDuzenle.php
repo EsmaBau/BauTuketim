@@ -8,20 +8,20 @@ ini_set('display_errors', 1);
 // POST isteği ile gelen verileri alma
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // POST verilerini doğru anahtarlarla alın
-    $GiderTipid = intval($_POST["GiderTipiId"]);
-    $Tip = $_POST["Tip"];
+    $GiderTipiId = intval($_POST["GiderTipiId"]); 
+    $Tip = $_POST["Tip"]; 
 
-        try {
+    try {
         // SQL sorgusunu hazırlama
-        $sql = "UPDATE gidertipis SET Tip = :Tip WHERE GiderTipiId = :GiderTipiId";
-
+        $sql = "UPDATE gidertipis SET tip = :Tip WHERE gidertipiId = :GiderTipiId";
+    
         // Sorguyu hazırlama
         $stmt = $db->prepare($sql);
-
+    
         // Parametreleri bağlama
-        $stmt->bindParam(":Tip", $Tip);
-        $stmt->bindParam(":GiderTipiId", $GiderTipiId);
-
+        $stmt->bindValue(":Tip", $Tip);
+        $stmt->bindValue(":GiderTipiId", $GiderTipiId);
+    
         // Sorguyu çalıştırma ve sonucu kontrol etme
         if ($stmt->execute()) {
             echo "Veri başarıyla güncellendi.";
@@ -31,4 +31,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } catch (PDOException $e) {
         echo "Hata: " . $e->getMessage();
     }
-}
+}   
+?>  

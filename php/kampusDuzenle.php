@@ -12,7 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $KampusAd = $_POST["KampusAd"];
 
 
-
     try {
         // SQL sorgusunu hazırlama
         $sql = "UPDATE kampuss SET kampusAd = :kampusAd WHERE kampusId = :kampusId";
@@ -33,4 +32,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } catch (PDOException $e) {
         echo "Hata: " . $e->getMessage();
     }
-}
+}   
+?>  
