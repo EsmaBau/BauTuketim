@@ -27,6 +27,19 @@ try {
     $tesisatQuery->execute([$tesisatId]);
     $tesisatNo = $tesisatQuery->fetchColumn();
 
+    // Önceki okuma değerlerini kontrol etmek için sorguyu hazırla
+    $prevReadingQuery = $db->prepare("SELECT T1, T2, T3 FROM elektrikokuma WHERE KampusAd = ? AND TesisatNo = ? ORDER BY OkumaTarihi DESC LIMIT 1");
+    $prevReadingQuery->execute([$kampusAd, $tesisatNo]);
+    $prevReading = $prevReadingQuery->fetch(PDO::FETCH_ASSOC);
+
+    // Önceki okuma değerlerini kontrol et
+    if ($prevReading) {
+        if ($t1 <= $prevReading['T1'] || $t2 <= $prevReading['T2'] || $t3 <= $prevReading['T3']) {
+            echo "Hata: Her bir T1, T2 ve T3 değeri önceki okuma değerlerinden büyük olmalıdır.";
+            exit();
+        }
+    }
+
     // Veritabanına veri eklemek için SQL sorgusu hazırla
     $query = $db->prepare("INSERT INTO elektrikokuma (KampusAd, Tip, TesisatNo, OkumaTarihi, T1, T2, T3) VALUES (?, ?, ?, ?, ?, ?, ?)");
     // Sorguyu çalıştır
