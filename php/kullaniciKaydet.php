@@ -25,10 +25,34 @@ if ($result['count'] > 0) {
     echo "Bu e-posta adresine ait hesap zaten mevcut.";
 } else {
     // E-posta adresine ait hesap yoksa yeni kaydı ekleyebiliriz
-    // Birden fazla yetki seçilebileceği için foreach döngüsüyle her bir yetkiyi ekliyoruz
+    // Birden fazla yetki seçilebileceği için tek bir kayıtta toplamak için bir dizi oluşturuyoruz
+    $kullaniciKayit = array();
     foreach ($YetkiIdArray as $YetkiId) {
-        $query = $db->prepare("INSERT INTO kullaniciis (KullaniciAd, KullaniciSoyad, YetkiId, Email, Sifre, KullaniciTelefon, KullaniciStatus) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $r = $query->execute(array($KullaniciAd, $KullaniciSoyad, $YetkiId, $Email, $Sifre, $KullaniciTelefon, 1));
+        // Her bir yetki için kullanıcı bilgileriyle birlikte bir dizi oluşturuyoruz
+        $kullaniciBilgileri = array(
+            'KullaniciAd' => $KullaniciAd,
+            'KullaniciSoyad' => $KullaniciSoyad,
+            'YetkiId' => $YetkiId,
+            'Email' => $Email,
+            'Sifre' => $Sifre,
+            'KullaniciTelefon' => $KullaniciTelefon
+        );
+        // Oluşturduğumuz diziyi ana diziye ekliyoruz
+        array_push($kullaniciKayit, $kullaniciBilgileri);
+    }
+
+    // Tüm kullanıcı bilgilerini tek bir kayıtta eklemek için tek bir sorgu kullanıyoruz
+    $query = $db->prepare("INSERT INTO kullaniciis (KullaniciAd, KullaniciSoyad, YetkiId, Email, Sifre, KullaniciTelefon, KullaniciStatus) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    foreach ($kullaniciKayit as $kullanici) {
+        $r = $query->execute(array(
+            $kullanici['KullaniciAd'],
+            $kullanici['KullaniciSoyad'],
+            $kullanici['YetkiId'],
+            $kullanici['Email'],
+            $kullanici['Sifre'],
+            $kullanici['KullaniciTelefon'],
+            1
+        ));
 
         if (!$r) {
             // Hata durumunda hemen işlemi sonlandırıp hata mesajını gönder

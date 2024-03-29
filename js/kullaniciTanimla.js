@@ -146,7 +146,7 @@ $("#kullaniciKaydet").click(function () {
     $(".chkYetki:checked").each(function() {
         selectedYetkiId.push($(this).val());
     });
-    
+     
     // Seçili yetkileri JSON formatında bir string'e dönüştür
     var selectedYetkiIdJSON = JSON.stringify(selectedYetkiId);
     
