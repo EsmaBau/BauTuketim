@@ -18,10 +18,10 @@ $(document).ready(function () {
 
                     if (yetkiId === 3) {
                         // YetkiId 3 ise, kullanıcıyı index.html sayfasına yönlendir
-                        window.location.href = 'index.html';
+                        window.location.href = 'index.php';
                     } else {
                         // YetkiId 3 değilse, kullanıcıyı elektrikOkuma.html sayfasına yönlendir
-                        window.location.href = 'elektrikOkuma.html';
+                        window.location.href = 'elektrikOkuma.php';
                     }
                 } else {
                     // Giriş başarısız ise uygun mesajı göster

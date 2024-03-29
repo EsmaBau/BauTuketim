@@ -40,7 +40,9 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <?php if ($_SESSION['yetkiId'] == 3) { ?>
+            <?php 
+            session_start();
+            if ($_SESSION['yetkiId'] == 3) { ?>
                 <!-- Heading -->
                 <div class="sidebar-heading">
                     Tanımlamalar
