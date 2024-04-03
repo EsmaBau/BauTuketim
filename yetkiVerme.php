@@ -1,3 +1,9 @@
+<?php
+session_start(); // Oturumu başlat
+
+// Diğer PHP kodları devam eder...
+?>
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -6,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>BAU/Yetkiler</title>
+    <title>BAU/Yetki Atama</title>
  <!-- Bootstrap csS -->
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
@@ -18,8 +24,9 @@
 
  <!-- Custom CSS -->
  <link href="css/sb-admin-2.min.css" rel="stylesheet">
- <link href="css/yetki.css" rel="stylesheet">
+ <link href="css/yetkiVer.css" rel="stylesheet">
  <link href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" rel="stylesheet">
+ 
 </head>
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -27,7 +34,7 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <div class="sidebar-brand-icon rotate-n-15">
                 </div>
                 <div class="sidebar-brand-text mx-3">BAU Tüketim <sup>.</sup></div>
@@ -48,14 +55,13 @@
                 <div id="collapseTanımlamalar" class="collapse" aria-labelledby="headingTanımlamalar" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Tanımlamalar:</h6>
-                        <a class="collapse-item" href="index.html">Kampüs Tanımlama</a>
-                        <a class="collapse-item" href="giderTipiBelirle.html">Gider Tipi Belirleme</a>
-                        <a class="collapse-item" href="tesisatTanimlama.html">Tesisat Tanımlama</a>
-                        <a class="collapse-item" href="kullaniciTanimlama.html">Kullanıcı Tanımlama</a>
+                        <a class="collapse-item" href="index.php">Kampüs Tanımlama</a>
+                        <a class="collapse-item" href="giderTipiBelirle.php">Gider Tipi Tanımlama</a>
+                        <a class="collapse-item" href="tesisatTanimlama.php">Tesisat Tanımlama</a>
+                        <a class="collapse-item" href="kullaniciTanimlama.php">Kullanıcı Tanımlama</a>
                     </div>
                 </div>
             </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider">
             <!-- Heading -->
@@ -70,8 +76,8 @@
                 <div id="collapseYetkiler" class="collapse" aria-labelledby="headingYetkiler" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Yetki İşlemleri:</h6>
-                        <a class="collapse-item" href="Yetkiler.html">Yetkiler</a>
-                        <a class="collapse-item" href="yetkiVerme.html">Yetki Verme</a>
+                        <a class="collapse-item" href="yetkiler.php">Yetkiler</a>
+                        <a class="collapse-item" href="yetkiVerme.php">Yetki Verme</a>
                     </div>
                 </div>
             </li>
@@ -89,10 +95,9 @@
                 <div id="collapseOkumalar" class="collapse" aria-labelledby="headingOkumalar" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Okuma İşlemleri:</h6>
-                        <a class="collapse-item" href="elektrikOkuma.html">Elektrik Okuma</a>
-                        <a class="collapse-item" href="suOkuma.html">Su Okuma</a>
-                        <a class="collapse-item" href="dogalgazOkuma.html">Doğalgaz Okuma</a>
-                    
+                        <a class="collapse-item" href="elektrikOkuma.php">Elektrik Okuma</a>
+                        <a class="collapse-item" href="suOkuma.php">Su Okuma</a>
+                        <a class="collapse-item" href="dogalgazOkuma.php">Doğalgaz Okuma</a>
                     </div>
                 </div>
             </li>
@@ -130,104 +135,68 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <p class="mr-2 d-none d-lg-inline text-gray-600 small">
+                            Yetki:
+                              <?php echo isset($_SESSION['yetkiId']) && $_SESSION['yetkiId'] == 3 ? "Admin" : "Kullanıcı"; ?>
+                           </p>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                         </li>
                     </ul>
                 </nav>             
                     <div class="row">
+                    <div class="col-lg-6 mb-4">
                 </div>
-                   
+                <form id="yetkiVerForm">
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-4">
-                            <!-- Yetki Oluştur Bölümü -->
-                            <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                                <h1 class="h3 mb-0 text-gray-800" style="font-size: 20px; font-weight: bold;">Yetki Oluştur</h1>
-                            </div>
-                            <div style="background-color: white; padding: 20px; border-radius: 10px;">
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800" style="font-size: 24px; font-weight: bold; margin-left: 90px;">Yetki Verme</h1>
+                    </div>
+                    <!-- Ana Div -->
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <div style="background-color: white; padding: 20px; border-radius: 10px; width: 820px;">
+                            <div style="display: flex; flex-direction: row; ">
                                 <!-- Yetki Adı Girişi -->
-                                <div style="margin-top: 20px;">
-                                    <label for="yetkiAdi" style="color: black;"><b>Yetki Adı</b></label>
+                                <div style="margin-top: 20px; margin-right: 100px; margin-left: 60px;">
+                                    <label for="yetkiAdi" style="color: black;"><b>Yetkisi</b></label>
                                     <br>
-                                    <input type="text" id="yetkiAdi" name="yetkiAdi" class="yetkiAdi" style="width: 300px;" required>
+                                    <select type="text" id="yetkiAdi" name="yetkiAdi" class="yetkiAdi" style="width: 300px;" required>
+                                    </select>
                                 </div>
-                                <!-- Kaydet Butonu -->
-                                <div style="margin-top: 20px;">
-                                    <button type="button" id="btnYetkiKaydet" style="background-color: #307dc5; color: white; font-size: 16px; border: none; padding: 10px 20px; border-radius: 5px;">Kaydet</button>
-                                </div>                    
-                            </div>  
-                        </div>
-                        <div class="col-7">
-                            <!-- Yetkiler Tablosu -->
-                                <div class=" align-items-center justify-content-between">
-                                    <h1 class="h3 text-gray-800" style="font-size: 19px; font-weight: bold;">Yetkiler</h1>
+                                
+                                <!-- Kampüs Adı Girişi -->
+                                <div style="margin-top: 20px; ">
+                                    <label for="kampusAdi" style="color: black;"><b>Yetki Verilecek Kampüs</b></label>
+                                    <div id="kampusAdi" style="margin-top: 5px;"></div>
                                 </div>
-                            <table id="genelVeriYetki" class="genelVeriYetki" style="width:100%">
-                                <thead>
-                                    <tr>         
-                                        <th style="color: black;">Yetki Adı</th>                                                          
-                                        <th style="color: black;">İşlemler</th>                                    
-                                    </tr>
-                                </thead>
-                                <tbody id="Tbody">
-                                    <!-- Veritabanından çekilecek veriler buraya eklenecek -->
-                                </tbody>
-                            </table>
+                            </div>
+                            <!-- Kaydet Butonu -->
+                            <div style="margin-top: 20px; text-align: center;">
+                                <button type="button" id="btnYetkilendir" style="background-color: #307dc5; color: white; font-size: 14px; border: none; padding: 10px 20px; border-radius: 5px;">Yetkilendir</button>
+                            </div>
                         </div>
                     </div>
-                </div> 
-                
-        </div>
-   </div>   
-           <!-- Modal -->
-   <div class="modal fade" id="duzenleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Yetki Düzenle</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form id="duzenleForm">
-            <div class="form-group">
-              <label for="duzenleYetkiAdi">Yetki Adı</label>
-              <input type="text" class="form-control" id="duzenleYetkiAdi">
+                </div>
+                </form>
             </div>
-            <input type="hidden" id="duzenleId"> <!-- Düzenlenecek öğenin ID'sini saklamak için gizli bir alan -->
-          </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
-          <button type="button" class="btn btn-primary" id="duzenleKaydet">Kaydet</button>
-        </div>
-       </div>
-     </div>
-  </div>
-
-
-
-
-
-
-
-      <!-- jQuery ve Bootstrap JS -->
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  
-      <!-- DataTables JS -->
-      <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-  
-      <!-- DataTables Buttons eklentisi JS -->
-      <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
-      <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
-      <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
-    <script src="js/yetkiler.js"></script>             
-</body>
+        <!-- jQuery ve Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <!-- DataTables JS -->
+        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <!-- DataTables Buttons eklentisi JS -->
+        <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+        <script src="js/yetkiVer.js"></script>      
+        
+        
+        
+    </body>
 </html>

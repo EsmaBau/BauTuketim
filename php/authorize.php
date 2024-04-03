@@ -11,9 +11,9 @@ if (!isset($_SESSION['yetkiId'])) {
 $gosterLinkler = array();
 if ($_SESSION['yetkiId'] === 5) {
     // Admin yetkisi varsa, tüm linkler gösterilir
-    $gosterLinkler = array("elektrikOkuma.html", "suOkuma.html", "dogalgazOkuma.html", "telefonErisim.html","giderTipiBelirle.html", "kullaniciTanimlama.html", "tablolar.html", "tesisatTanimlama.html","yetkiVerme.html","yetkiler.html");
+    $gosterLinkler = array("elektrikOkuma.php", "suOkuma.php", "dogalgazOkuma.php", "telefonErisim.html","giderTipiBelirle.php", "kullaniciTanimlama.php", "tablolar.html", "tesisatTanimlama.php","yetkiVerme.php","yetkiler.php");
 } else {
     // Diğer kullanıcılar için sadece belirli linkler gösterilir
-    $gosterLinkler = array("telefonErisim.html", "elektrikOkuma.html", "suOkuma.html", "dogalgazOkuma.html");
+    $gosterLinkler = array("telefonErisim.html", "elektrikOkuma.php", "suOkuma.php", "dogalgazOkuma.php");
 }
 ?>

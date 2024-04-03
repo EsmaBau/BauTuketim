@@ -1,7 +1,7 @@
 <?php
  
 /*
- * Example PHP implementation used for the index.html example
+ * Example PHP implementation used for the index.php example
  */
  
 // DataTables PHP library

@@ -1,3 +1,8 @@
+<?php
+session_start(); // Oturumu başlat
+
+// Diğer PHP kodları devam eder...
+?>
 <!DOCTYPE html>
 <html lang="tr">
 
@@ -24,7 +29,7 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <div class="sidebar-brand-icon rotate-n-15">
                 </div>
                 <div class="sidebar-brand-text mx-3">BAU Tüketim <sup>.</sup></div>
@@ -47,10 +52,10 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Tanımlamalar:</h6>
-                        <a class="collapse-item" href="index.html">Kampüs Tanımlama</a>
-                        <a class="collapse-item" href="giderTipiBelirle.html">Gider Tipi Tanımlama</a>
-                        <a class="collapse-item" href="tesisatTanimlama.html">Tesisat Tanımlama</a>
-                        <a class="collapse-item" href="kullaniciTanimlama.html">Kullanıcı Tanımlama</a>
+                        <a class="collapse-item" href="index.php">Kampüs Tanımlama</a>
+                        <a class="collapse-item" href="giderTipiBelirle.php">Gider Tipi Tanımlama</a>
+                        <a class="collapse-item" href="tesisatTanimlama.php">Tesisat Tanımlama</a>
+                        <a class="collapse-item" href="kullaniciTanimlama.php">Kullanıcı Tanımlama</a>
                     </div>
                 </div>
             </li>
@@ -71,8 +76,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Yetki İşlemleri:</h6>
-                        <a class="collapse-item" href="Yetkiler.html">Yetki Tanımlama</a>
-                        <a class="collapse-item" href="yetkiVerme.html">Yetki Verme</a>
+                        <a class="collapse-item" href="Yetkiler.php">Yetki Tanımlama</a>
+                        <a class="collapse-item" href="yetkiVerme.php">Yetki Verme</a>
                     </div>
                 </div>
             </li>
@@ -93,9 +98,9 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Okuma İşlemleri:</h6>
-                        <a class="collapse-item" href="elektrikOkuma.html">Elektrik Okuma</a>
-                        <a class="collapse-item" href="suOkuma.html">Su Okuma</a>
-                        <a class="collapse-item" href="dogalgazOkuma.html">Doğalgaz Okuma</a>
+                        <a class="collapse-item" href="elektrikOkuma.php">Elektrik Okuma</a>
+                        <a class="collapse-item" href="suOkuma.php">Su Okuma</a>
+                        <a class="collapse-item" href="dogalgazOkuma.php">Doğalgaz Okuma</a>
                     </div>
                 </div>
             </li>
@@ -134,9 +139,9 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <p class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                    Yetki:
-                                    <?php echo $_SESSION['yetkiId'] == 3 ? "Admin" : "Kullanıcı" ?>
-                                </p>
+                            Yetki:
+                              <?php echo isset($_SESSION['yetkiId']) && $_SESSION['yetkiId'] == 3 ? "Admin" : "Kullanıcı"; ?>
+                           </p>
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>

@@ -220,6 +220,17 @@ $(document).ready(function () {
         }  $('#collapseYetkiler').parent('.nav-item').hide();/*/
         
 
+ // Collapse işlevini etkinleştir
+ $('#accordionSidebar .nav-link').on('click', function(){
+    // Tıklanan menü öğesinin alt menüsünü bul
+    var submenu = $(this).next('.collapse');
+   
+     // Tüm alt menüleri kapalı olarak ayarla
+   $('#accordionSidebar .collapse').not(submenu).collapse('hide');
+   
+    // Tıklanan menü öğesinin alt menüsünü aç veya kapat
+    submenu.collapse('toggle');
+});
 
 
 });
@@ -244,14 +255,4 @@ document.addEventListener("click", function (event) {
 
 
   
-    // Collapse işlevini etkinleştir
-     $('#accordionSidebar .nav-link').on('click', function(){
-        // Tıklanan menü öğesinin alt menüsünü bul
-        var submenu = $(this).next('.collapse');
-       
-         // Tüm alt menüleri kapalı olarak ayarla
-       $('#accordionSidebar .collapse').not(submenu).collapse('hide');
-       
-        // Tıklanan menü öğesinin alt menüsünü aç veya kapat
-        submenu.collapse('toggle');
-   });
+   
